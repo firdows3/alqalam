@@ -272,6 +272,7 @@ export default function Profile() {
                 <th></th>
               </tr>
             </thead>
+
             <tbody>
               {data.teachers
                 .filter((t) => t.username === user) // ✅ Only show logged-in teacher
