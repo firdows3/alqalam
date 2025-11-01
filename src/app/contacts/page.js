@@ -18,7 +18,7 @@ export default function Contacts() {
   return (
     <div className={`${judson.className} ${styles.page}`}>
       <div className={styles.contactBanner}>
-        <img src="/contactBanner.jpg" />
+        <img src="/contactBanner.png" />
       </div>
       <div className={styles.contactsContainer}>
         <div className={styles.contactsLeft}>

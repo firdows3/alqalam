@@ -9,7 +9,7 @@ export default function About() {
   return (
     <div className={`${judson.className} ${styles.page}`}>
       <div className={styles.aboutBanner}>
-        <img src="/aboutBanner.jpg" />
+        <img src="/aboutCpd1.jpg" />
       </div>
       <div className={styles.aboutSchool}>
         <div className={styles.aboutHow}>
@@ -125,11 +125,12 @@ export default function About() {
         </div>
         <div className={styles.aboutCpdImgs}>
           <img src="/homeBanner.jpg" />
-          <img src="/aboutBanner.jpg" />
-          <img src="/homeAbout3.jpg" />
-          <img src="/homwAbout1.jpg" />
-          <img src="/homwAbout2.jpg" />
-          <img src="/logo.jpg" />
+          <img src="/aboutCpd1.jpg" />
+          <img src="/aboutCpd2.jpg" />
+          <img src="/aboutCpd3.jpg" />
+          <img src="/aboutCpd4.jpg" />
+          <img src="/aboutCpd5.jpg" />
+          <img src="/aboutCpd6.jpg" />
         </div>
       </div>
       <div className={styles.aboutStaff}>

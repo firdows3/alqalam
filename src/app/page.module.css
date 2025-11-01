@@ -18,7 +18,7 @@
 .banner {
   position: relative;
   width: 100%;
-  margin-bottom: 100px;
+  margin: 60px 0px 100px;
 }
 .banner img {
   width: 100%;
@@ -190,7 +190,7 @@
 /* about page */
 .aboutBanner {
   width: 100%;
-  margin-bottom: 40px;
+  margin: 60px 0px 40px;
 }
 .aboutBanner img {
   width: 100%;
@@ -286,7 +286,7 @@
 
 .contactBanner {
   width: 100%;
-  margin-bottom: 40px;
+  margin: 60px 0px 40px;
 }
 .contactBanner img {
   width: 100%;
@@ -1069,6 +1069,11 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+  .aboutBanner img,
+  .contactBanner img,
+  .banner img {
+    height: 400px;
+  }
 }
 @media (max-width: 700px) {
   .homeAbout {
@@ -1143,6 +1148,11 @@
   .loginPage {
     margin-top: 20%;
   }
+  .aboutBanner img,
+  .contactBanner img,
+  .banner img {
+    height: 350px;
+  }
 }
 @media (max-width: 500px) {
   .faqContainer {
@@ -1207,6 +1217,11 @@
   .profileContainer {
     margin-top: 25%;
   }
+  .aboutBanner img,
+  .contactBanner img,
+  .banner img {
+    height: 280px;
+  }
 }
 @media (max-width: 305px) {
   .loginRight div {
@@ -1217,5 +1232,10 @@
   }
   .loginLeft div {
     width: 280px;
+  }
+  .aboutBanner img,
+  .contactBanner img,
+  .banner img {
+    height: 250px;
   }
 }

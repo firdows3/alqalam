@@ -117,10 +117,10 @@ export default function Home() {
       <div className={styles.homeAbout}>
         <div className={styles.homeAboutLeft}>
           <div>
-            <img src="/homwAbout1.jpg" />
-            <img src="/homwAbout2.jpg" />
+            <img src="/aboutCpd1.jpg" />
+            <img src="/aboutCpd2.jpg" />
           </div>
-          <img src="/homeAbout3.jpg" />
+          <img src="/aboutCpd6.jpg" />
         </div>
         <div className={styles.homeAboutRight}>
           <div className={styles.homeAboutTitle}>
