@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "ALQALAM KINDERGARTEN & PRIMARY SCHOOL",
-  description: "",
+  description: "Alqalam School",
 };
 
 export default function RootLayout({ children }) {
