@@ -60,6 +60,7 @@ export default function About() {
             their faith, community, and country.
           </div>
         </div>
+
         <div className={styles.aboutGoal}>
           <div className={styles.aboutGoalTitle}>OUR GOAL</div>
           <div>
