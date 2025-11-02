@@ -56,7 +56,10 @@ export default function Login() {
       <div className={styles.loginContainer}>
         <div className={styles.loginLeft}>
           <img src="/logo.jpg" alt="Logo" />
-          <div>WELCOME TO ALQALAM KINDERGARTEN & PRIMARY SCHOOL!</div>
+          <div>
+            WELCOME TO Al-Qalam Pre-Primary,Primary and Middle Level School
+            P.L.C.!
+          </div>
         </div>
         <div className={styles.divider}></div>
         <form className={styles.loginRight} onSubmit={handleLogin}>

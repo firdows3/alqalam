@@ -124,19 +124,19 @@ export default function Home() {
         </div>
         <div className={styles.homeAboutRight}>
           <div className={styles.homeAboutTitle}>
-            ALQALAM KINDERGARTEN AND PRIMARY SCHOOL
+            Al-Qalam Pre-Primary,Primary and Middle Level School P.L.C.
           </div>
           <div className={styles.homeAboutDesc}>
-            At Alqalam Kindergarten and Primary School, we are dedicated to
-            shaping young minds through a balanced blend of academic excellence,
-            moral guidance, and spiritual development. Our mission is to provide
-            a nurturing environment where every child feels valued, supported,
-            and inspired to reach their full potential. With a team of
-            passionate and caring teachers, we create joyful learning
-            experiences that encourage curiosity, creativity, and critical
-            thinking. Beyond academics, we instill strong ethical and spiritual
-            values that guide our students to become responsible, confident, and
-            compassionate individuals.
+            At Al-Qalam Pre-Primary,Primary and Middle Level School P.L.C., we
+            are dedicated to shaping young minds through a balanced blend of
+            academic excellence, moral guidance, and spiritual development. Our
+            mission is to provide a nurturing environment where every child
+            feels valued, supported, and inspired to reach their full potential.
+            With a team of passionate and caring teachers, we create joyful
+            learning experiences that encourage curiosity, creativity, and
+            critical thinking. Beyond academics, we instill strong ethical and
+            spiritual values that guide our students to become responsible,
+            confident, and compassionate individuals.
           </div>
           <Link href="/about" className={styles.homeBtn}>
             ABOUT US

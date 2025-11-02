@@ -39,7 +39,7 @@ export default function Contacts() {
           </div>
           <div className={styles.contactsIcons}>
             <a
-              href="https://t.me/yourusername"
+              href="https://t.me/Alqalamschoolplc"
               target="_blank"
               rel="noopener noreferrer"
             >

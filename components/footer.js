@@ -32,6 +32,7 @@ export default function Footer() {
       <div className="footer-middle">
         <div className="footer-middle-left">
           <img src="/logo.png" />
+          <div>በአብሮነት ለልህቀት እንተጋለን!!!</div>
           <Link className="footer-link" href="/">
             Privacy and Policy
           </Link>
@@ -40,7 +41,7 @@ export default function Footer() {
           </Link>
         </div>
         <div className="footer-middle-icons">
-          <a href="https://telegram.org" target="_blank">
+          <a href="https://t.me/Alqalamschoolplc" target="_blank">
             <FaTelegramPlane />
           </a>
           <a href="https://instagram.com" target="_blank">
@@ -63,8 +64,8 @@ export default function Footer() {
         </div>
       </div>
       <div style={{ textAlign: "center", padding: 20 }}>
-        copyright &copy; Alqalam kindergarten and primary school | All rights
-        reserved.
+        copyright &copy; Al-Qalam Pre-Primary,Primary and Middle Level School
+        P.L.C.. | All rights reserved.
       </div>
     </div>
   );

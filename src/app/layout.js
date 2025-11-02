@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "ALQALAM KINDERGARTEN & PRIMARY SCHOOL",
+  title: "Al-Qalam Pre-Primary,Primary and Middle Level School P.L.C.",
   description: "Alqalam School",
 };
 

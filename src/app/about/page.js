@@ -15,59 +15,90 @@ export default function About() {
         <div className={styles.aboutHow}>
           <div className={styles.aboutHowTitle}>HOW ALQALAM STARTED?</div>
           <div>
-            Alqalam Kindergarten and Primary School was born from a dream — a
-            dream to provide children with an education that shapes both the
-            mind and the heart. Founded by Ustaz Bedru Nuru, Alqalam began as a
-            small learning center built on strong values of faith, discipline,
-            and community service. From the very start, the goal was clear: to
-            nurture a generation grounded in Islamic principles, equipped with
-            academic excellence, and prepared to make a positive difference in
-            the world. In its early days, Alqalam started with a few classrooms,
-            dedicated teachers, and parents who believed in the vision. Despite
-            limited resources, the school was rich in purpose, passion, and
-            prayer. Every lesson taught, every activity planned, and every value
-            instilled carried the spirit of sincerity and commitment to raising
-            children who not only excel in their studies but also embody good
-            manners, respect, and compassion. Over time, Alqalam grew steadily —
-            expanding its facilities, enhancing its curriculum, and welcoming
-            more students into its family. The journey was not without
-            challenges, but through hard work, unity, and unwavering faith, the
-            school continued to progress and gain the trust of the community.
-            Today, Alqalam Kindergarten and Primary School stands as a symbol of
-            dedication and growth. It is more than just a place of learning — it
-            is a home where knowledge meets character, where teachers inspire,
-            and where students are guided to become the best versions of
-            themselves. With gratitude to Allah and the continued support of
-            parents, teachers, and the community, Alqalam remains committed to
-            shaping the future, one child at a time.
-          </div>
-        </div>
-        <div className={styles.aboutMission}>
-          <div className={styles.aboutMissionTitle}>OUR MISSION</div>
-          <div>
-            Our mission is to provide quality education rooted in Islamic
-            values, nurturing children to become knowledgeable, disciplined, and
-            compassionate individuals. We aim to develop their intellectual,
-            moral, and spiritual potential through a balanced curriculum and a
-            caring environment.
+            Al-Qalam Pre-Primary,Primary and Middle Level School P.L.C. was born
+            from a dream — a dream to provide children with an education that
+            shapes both the mind and the heart. Founded by Ustaz Bedru Nuru,
+            Alqalam began as a small learning center built on strong values of
+            faith, discipline, and community service. From the very start, the
+            goal was clear: to nurture a generation grounded in Islamic
+            principles, equipped with academic excellence, and prepared to make
+            a positive difference in the world. In its early days, Alqalam
+            started with a few classrooms, dedicated teachers, and parents who
+            believed in the vision. Despite limited resources, the school was
+            rich in purpose, passion, and prayer. Every lesson taught, every
+            activity planned, and every value instilled carried the spirit of
+            sincerity and commitment to raising children who not only excel in
+            their studies but also embody good manners, respect, and compassion.
+            Over time, Alqalam grew steadily — expanding its facilities,
+            enhancing its curriculum, and welcoming more students into its
+            family. The journey was not without challenges, but through hard
+            work, unity, and unwavering faith, the school continued to progress
+            and gain the trust of the community. Today, Al-Qalam
+            Pre-Primary,Primary and Middle Level School P.L.C. stands as a
+            symbol of dedication and growth. It is more than just a place of
+            learning — it is a home where knowledge meets character, where
+            teachers inspire, and where students are guided to become the best
+            versions of themselves. With gratitude to Allah and the continued
+            support of parents, teachers, and the community, Alqalam remains
+            committed to shaping the future, one child at a time.
           </div>
         </div>
         <div className={styles.aboutVision}>
-          <div className={styles.aboutVisionTitle}>OUR VISION</div>
+          <div className={styles.aboutVisionTitle}>ራዕይ</div>
+          <div>በእውቀትና በሥነምግባር የበለፀጉ፣ በዓለም ደረጃ ተወዳዳሪ ተማሪዎችን የሚያፈራ ተቋም መሆን</div>
+        </div>
+        <div className={styles.aboutMission}>
+          <div className={styles.aboutMissionTitle}>ተልዕኮ</div>
           <div>
-            To be a leading institution that inspires excellence in learning and
-            character, shaping future generations who contribute positively to
-            their faith, community, and country.
+            ደህንነቱ የተጠበቀና ምቹ አካባቢ በማቅረብ ተማሪዎችን በእውቀት፣ በክህሎትና በእሴት በማጎልበት በማህበረሰብ
+            ውስጥ አዎንታዊ ተፅዕኖ እንዲፈጥሩ ማብቃት
           </div>
         </div>
 
         <div className={styles.aboutGoal}>
-          <div className={styles.aboutGoalTitle}>OUR GOAL</div>
-          <div>
-            Our goal is to build a strong foundation for lifelong learning,
-            guided by faith and ethics — empowering every child to grow with
-            confidence, integrity, and a love for knowledge.
-          </div>
+          <div className={styles.aboutGoalTitle}>እሴቶች</div>
+          <ul>
+            <li>
+              <strong>ሞያዊነት:</strong>
+              የመማር ማስተማርና የተማሪዎች ባህሪይ የጥራት ስታንዳርዱን እንጠብቃለን።
+            </li>
+            <li>
+              <strong>ታማኝነት: </strong>
+              በትምህርት ባለድርሻ አካላት መካከል ታማኝነትን እንገነባለን።
+            </li>
+            <li>
+              <strong>ኃላፊነት: </strong>
+              ተግባራችንን በሙሉ ኃላፊነትና በጥንቃቄ እንወጣለን።
+            </li>
+            <li>
+              <strong>ተነሳሽነት: </strong>
+              ችግሮችን ለመፍታት ፈጠራን፣አዳዲስ ሃሳቦችንና ተነሳሽነትን እናበረታታለን።
+            </li>
+            <li>
+              <strong>ትብብር: </strong>
+              በአክብሮትና በአንድነት አብረን በመስራት የጋራ ግባችንን እውን እናደርጋለን።
+            </li>
+            <li>
+              <strong>አገልጋይነት: </strong>
+              በትህትና በቀናነትና በቁርጠኝነት ለማህበረሰቡ በጎውን እናደርጋለን።{" "}
+            </li>
+            <li>
+              <strong>ትህትና: </strong>
+              ለሁሉም በቃልና በተግባር አክብሮትንና ትህትናን እናሳያለን።{" "}
+            </li>
+            <li>
+              <strong>ፍትሃዊነት: </strong>
+              ሁሉንም በእኩልነትና በፍትሃዊነት እናስተናግዳለን።
+            </li>
+            <li>
+              <strong>ቻይነት: </strong>
+              በመማር ማስተማሩ ሂደት እርጋታን፣ትዕግስትንና ጽናትን ተላብሰን ግባችንን እናሳካለን።
+            </li>
+            <li>
+              <strong>ልህቀት: </strong>
+              በትምህርት፣በባህሪይና በአገልግሎት የልህቀት ደረጃን ለማሳካት እንተጋለን።
+            </li>
+          </ul>
         </div>
       </div>
       <div className={styles.aboutRules}>
