@@ -888,7 +888,7 @@ export default function Profile() {
                 {/* Reply Button */}
                 {!comm.parentComment && (
                   <div>
-                    {!comm.showReply ? (
+                    {!comm.showReply && role === "PARENT" ? (
                       <button
                         onClick={() =>
                           setCommunications((prev) =>
