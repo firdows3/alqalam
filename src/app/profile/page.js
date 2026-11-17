@@ -603,7 +603,7 @@ export default function Profile() {
                     </>
                   )}
                   {/* Reply Button */}
-                  {!comm.parentComment && (
+                  {!comm.parentComment && role === "PARENT" && (
                     <div>
                       {!comm.showReply ? (
                         <button
