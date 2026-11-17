@@ -172,6 +172,7 @@ export default function Profile() {
     const studentComms = communications.filter((c) => c.studentId === id);
     setSelectedStudentComms(studentComms);
   };
+
   const filteredSelectedComms = selectedStudentComms.filter((c) => {
     const commDate = new Date(c.createdAt);
     const commWeek = Math.ceil(commDate.getDate() / 7);
@@ -208,7 +209,21 @@ export default function Profile() {
       console.error(err);
     }
   };
+  const handleReplyComment = async (comm) => {
+    try {
+      const res = await axios.put("/api/communication", {
+        id: comm.id,
+        parentComment: comm.parentComment,
+      });
 
+      if (res.status === 200) {
+        const response = await axios.get("/api/communication");
+        setCommunications(response.data);
+      }
+    } catch (error) {
+      console.error("Error sending parent comment:", error);
+    }
+  };
   const [showLogout, setShowLogout] = useState(false);
   const router = useRouter();
   const handleLogout = async () => {
@@ -672,9 +687,6 @@ export default function Profile() {
                                       "Error sending parent comment:",
                                       error,
                                     );
-                                    alert(
-                                      "Failed to send comment. Please try again.",
-                                    );
                                   }
                                 }}
                               >
@@ -911,48 +923,23 @@ export default function Profile() {
                         <textarea
                           placeholder="Write your comment..."
                           value={comm.parentComment || ""}
-                          onChange={(e) =>
+                          onChange={(e) => {
+                            e.preventDefault();
                             setCommunications((prev) =>
                               prev.map((c) =>
                                 c.id === comm.id
                                   ? { ...c, parentComment: e.target.value }
                                   : c,
                               ),
-                            )
-                          }
+                            );
+                          }}
                           className={styles.replyInput}
                         ></textarea>
                         <button
                           className={styles.submitButton}
-                          onClick={async () => {
-                            try {
-                              const res = await axios.put(
-                                "/api/communication",
-                                {
-                                  id: comm.id,
-                                  parentComment: comm.parentComment,
-                                },
-                              );
-
-                              if (res.status === 200) {
-                                setCommunications((prev) =>
-                                  prev.map((c) =>
-                                    c.id === comm.id
-                                      ? { ...c, showReply: false }
-                                      : c,
-                                  ),
-                                );
-                                const res =
-                                  await axios.get("/api/communication");
-
-                                setCommunications(res.data);
-                              }
-                            } catch (error) {
-                              console.error("Error submitting comment:", error);
-                            }
-                          }}
+                          onClick={() => handleReplyComment(comm)}
                         >
-                          Submit
+                          Send
                         </button>
                       </div>
                     )}
