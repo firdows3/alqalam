@@ -661,20 +661,24 @@ export default function Profile() {
                                             : c,
                                         ),
                                       );
-                                      const res =
-                                        await axios.get("/api/communication");
 
-                                      setCommunications(res.data);
+                                      // Refresh communications
+                                      const response =
+                                        await axios.get("/api/communication");
+                                      setCommunications(response.data);
                                     }
                                   } catch (error) {
                                     console.error(
-                                      "Error submitting comment:",
+                                      "Error sending parent comment:",
                                       error,
+                                    );
+                                    alert(
+                                      "Failed to send comment. Please try again.",
                                     );
                                   }
                                 }}
                               >
-                                Submit
+                                Send
                               </button>
                             </div>
                           )}
@@ -790,19 +794,6 @@ export default function Profile() {
                     Teacher {comm.teacher?.user.username}'s Note:{" "}
                   </div>
                   <div>{comm.teacherNote}</div>
-                  {comm.parentComment ? (
-                    <>
-                      <div className={styles.commRow}>
-                        <div className={styles.sectionTitle}>
-                          Parents Comment:{" "}
-                        </div>
-                        <div>{comm.parentComment}</div>
-                      </div>
-                      <div className={styles.divider}></div>
-                    </>
-                  ) : (
-                    <div></div>
-                  )}
                 </div>
                 <div className={styles.divider}></div>
                 <div className={styles.commRow}>
