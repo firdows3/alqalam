@@ -605,14 +605,14 @@ export default function Profile() {
                   {/* Reply Button */}
                   {!comm.parentComment && (
                     <div>
-                      {!comm.showReply ? (
+                      {!comm.showReply && role === "PARENT" ? (
                         <button
                           className={styles.replyButton}
                           onClick={() =>
                             setCommunications((prev) =>
                               prev.map((c) =>
                                 c.id === comm.id
-                                  ? { ...c, showReply: true, draftComment: "" }
+                                  ? { ...c, showReply: true }
                                   : c,
                               ),
                             )
