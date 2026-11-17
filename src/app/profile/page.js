@@ -103,7 +103,7 @@ export default function Profile() {
     selectedStudentId || (students.length > 0 ? students[0].id : "");
 
   const filteredComms = communications.filter(
-    (c) => c.studentId === currentStudentId
+    (c) => c.studentId === currentStudentId,
   );
   const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const months = [
@@ -142,20 +142,20 @@ export default function Profile() {
 
   const handleCheckbox = (list, setList, value) => {
     setList((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
     );
   };
 
   const handleStatusToggle = (criteria, rating) => {
     setDailyStatus((prev) => {
       const exists = prev.find(
-        (s) => s.criteria === criteria && s.rating === rating
+        (s) => s.criteria === criteria && s.rating === rating,
       );
 
       // remove if already selected
       if (exists) {
         return prev.filter(
-          (s) => !(s.criteria === criteria && s.rating === rating)
+          (s) => !(s.criteria === criteria && s.rating === rating),
         );
       }
 
@@ -278,7 +278,7 @@ export default function Profile() {
                 .filter((t) => t.username === user) // ✅ Only show logged-in teacher
                 .flatMap((t) => t.teacher?.students || []) // ✅ Get their students
                 .filter(
-                  (s) => s.name.toLowerCase().includes(search.toLowerCase()) // ✅ search filter
+                  (s) => s.name.toLowerCase().includes(search.toLowerCase()), // ✅ search filter
                 )
                 .map((student) => (
                   <tr key={student.id}>
@@ -357,7 +357,7 @@ export default function Profile() {
                         handleCheckbox(
                           homeworkSubjects,
                           setHomeworkSubjects,
-                          subj
+                          subj,
                         )
                       }
                     />
@@ -395,7 +395,7 @@ export default function Profile() {
                                 dailyStatus.find(
                                   (s) =>
                                     s.criteria === criteria &&
-                                    s.rating === rating
+                                    s.rating === rating,
                                 ) !== undefined
                               }
                               onChange={() =>
@@ -527,7 +527,7 @@ export default function Profile() {
                             />
                             <span>{subject}</span>
                           </label>
-                        )
+                        ),
                       )}
                     </div>
                   </div>
@@ -588,92 +588,98 @@ export default function Profile() {
                     </>
                   )}
                   {/* Reply Button */}
-                  {!comm.parentComment && (
-                    <div>
-                      {!comm.showReply ? (
-                        <button
-                          onClick={() =>
-                            setCommunications((prev) =>
-                              prev.map((c) =>
-                                c.id === comm.id ? { ...c, showReply: true } : c
-                              )
-                            )
-                          }
-                          className={styles.replyButton}
-                        >
-                          Reply
-                        </button>
-                      ) : (
-                        <div className={styles.replyForm}>
-                          <FaTimes
-                            style={{
-                              cursor: "pointer",
-                              color: "#888",
-                            }}
-                            onClick={() => {
-                              setCommunications((prev) =>
-                                prev.map((c) =>
-                                  c.id === comm.id
-                                    ? { ...c, showReply: false }
-                                    : c
+                  {!comm.parentComment &&
+                    role ===
+                      "PARENT"(
+                        <div>
+                          {!comm.showReply ? (
+                            <button
+                              onClick={() =>
+                                setCommunications((prev) =>
+                                  prev.map((c) =>
+                                    c.id === comm.id
+                                      ? { ...c, showReply: true }
+                                      : c,
+                                  ),
                                 )
-                              );
-                            }}
-                          />
-                          <textarea
-                            placeholder="Write your comment..."
-                            value={comm.parentComment || ""}
-                            onChange={(e) =>
-                              setCommunications((prev) =>
-                                prev.map((c) =>
-                                  c.id === comm.id
-                                    ? { ...c, parentComment: e.target.value }
-                                    : c
-                                )
-                              )
-                            }
-                            className={styles.replyInput}
-                          ></textarea>
-                          <button
-                            className={styles.submitButton}
-                            onClick={async () => {
-                              try {
-                                const res = await axios.put(
-                                  "/api/communication",
-                                  {
-                                    id: comm.id,
-                                    parentComment: comm.parentComment,
-                                  }
-                                );
-
-                                if (res.status === 200) {
+                              }
+                              className={styles.replyButton}
+                            >
+                              Reply
+                            </button>
+                          ) : (
+                            <div className={styles.replyForm}>
+                              <FaTimes
+                                style={{
+                                  cursor: "pointer",
+                                  color: "#888",
+                                }}
+                                onClick={() => {
                                   setCommunications((prev) =>
                                     prev.map((c) =>
                                       c.id === comm.id
                                         ? { ...c, showReply: false }
-                                        : c
-                                    )
+                                        : c,
+                                    ),
                                   );
-                                  const res = await axios.get(
-                                    "/api/communication"
-                                  );
-
-                                  setCommunications(res.data);
+                                }}
+                              />
+                              <textarea
+                                placeholder="Write your comment..."
+                                value={comm.parentComment || ""}
+                                onChange={(e) =>
+                                  setCommunications((prev) =>
+                                    prev.map((c) =>
+                                      c.id === comm.id
+                                        ? {
+                                            ...c,
+                                            parentComment: e.target.value,
+                                          }
+                                        : c,
+                                    ),
+                                  )
                                 }
-                              } catch (error) {
-                                console.error(
-                                  "Error submitting comment:",
-                                  error
-                                );
-                              }
-                            }}
-                          >
-                            Submit
-                          </button>
-                        </div>
+                                className={styles.replyInput}
+                              ></textarea>
+                              <button
+                                className={styles.submitButton}
+                                onClick={async () => {
+                                  try {
+                                    const res = await axios.put(
+                                      "/api/communication",
+                                      {
+                                        id: comm.id,
+                                        parentComment: comm.parentComment,
+                                      },
+                                    );
+
+                                    if (res.status === 200) {
+                                      setCommunications((prev) =>
+                                        prev.map((c) =>
+                                          c.id === comm.id
+                                            ? { ...c, showReply: false }
+                                            : c,
+                                        ),
+                                      );
+                                      const res =
+                                        await axios.get("/api/communication");
+
+                                      setCommunications(res.data);
+                                    }
+                                  } catch (error) {
+                                    console.error(
+                                      "Error submitting comment:",
+                                      error,
+                                    );
+                                  }
+                                }}
+                              >
+                                Submit
+                              </button>
+                            </div>
+                          )}
+                        </div>,
                       )}
-                    </div>
-                  )}
                 </div>
               ))
             ) : (
@@ -784,6 +790,17 @@ export default function Profile() {
                     Teacher {comm.teacher?.user.username}'s Note:{" "}
                   </div>
                   <div>{comm.teacherNote}</div>
+                  {comm.parentComment && (
+                    <>
+                      <div className={styles.commRow}>
+                        <div className={styles.sectionTitle}>
+                          Parents Comment:{" "}
+                        </div>
+                        <div>{comm.parentComment}</div>
+                      </div>
+                      <div className={styles.divider}></div>
+                    </>
+                  )}
                 </div>
                 <div className={styles.divider}></div>
                 <div className={styles.commRow}>
@@ -805,7 +822,7 @@ export default function Profile() {
                           />
                           <span>{subject}</span>
                         </label>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
@@ -873,8 +890,8 @@ export default function Profile() {
                         onClick={() =>
                           setCommunications((prev) =>
                             prev.map((c) =>
-                              c.id === comm.id ? { ...c, showReply: true } : c
-                            )
+                              c.id === comm.id ? { ...c, showReply: true } : c,
+                            ),
                           )
                         }
                         className={styles.replyButton}
@@ -893,8 +910,8 @@ export default function Profile() {
                               prev.map((c) =>
                                 c.id === comm.id
                                   ? { ...c, showReply: false }
-                                  : c
-                              )
+                                  : c,
+                              ),
                             );
                           }}
                         />
@@ -906,8 +923,8 @@ export default function Profile() {
                               prev.map((c) =>
                                 c.id === comm.id
                                   ? { ...c, parentComment: e.target.value }
-                                  : c
-                              )
+                                  : c,
+                              ),
                             )
                           }
                           className={styles.replyInput}
@@ -921,7 +938,7 @@ export default function Profile() {
                                 {
                                   id: comm.id,
                                   parentComment: comm.parentComment,
-                                }
+                                },
                               );
 
                               if (res.status === 200) {
@@ -929,12 +946,11 @@ export default function Profile() {
                                   prev.map((c) =>
                                     c.id === comm.id
                                       ? { ...c, showReply: false }
-                                      : c
-                                  )
+                                      : c,
+                                  ),
                                 );
-                                const res = await axios.get(
-                                  "/api/communication"
-                                );
+                                const res =
+                                  await axios.get("/api/communication");
 
                                 setCommunications(res.data);
                               }
