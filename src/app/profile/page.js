@@ -790,7 +790,7 @@ export default function Profile() {
                     Teacher {comm.teacher?.user.username}'s Note:{" "}
                   </div>
                   <div>{comm.teacherNote}</div>
-                  {comm.parentComment && (
+                  {comm.parentComment ? (
                     <>
                       <div className={styles.commRow}>
                         <div className={styles.sectionTitle}>
@@ -800,6 +800,8 @@ export default function Profile() {
                       </div>
                       <div className={styles.divider}></div>
                     </>
+                  ) : (
+                    <div></div>
                   )}
                 </div>
                 <div className={styles.divider}></div>
