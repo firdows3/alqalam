@@ -603,90 +603,61 @@ export default function Profile() {
                     </>
                   )}
                   {/* Reply Button */}
-                  {!comm.parentComment && role === "PARENT" && (
+                  {!comm.parentComment && (
                     <div>
                       {!comm.showReply ? (
                         <button
+                          className={styles.replyButton}
                           onClick={() =>
                             setCommunications((prev) =>
                               prev.map((c) =>
                                 c.id === comm.id
-                                  ? { ...c, showReply: true }
+                                  ? { ...c, showReply: true, draftComment: "" }
                                   : c,
                               ),
                             )
                           }
-                          className={styles.replyButton}
                         >
                           Reply
                         </button>
                       ) : (
                         <div className={styles.replyForm}>
                           <FaTimes
-                            style={{
-                              cursor: "pointer",
-                              color: "#888",
-                            }}
-                            onClick={() => {
-                              setCommunications((prev) =>
-                                prev.map((c) =>
-                                  c.id === comm.id
-                                    ? { ...c, showReply: false }
-                                    : c,
-                                ),
-                              );
-                            }}
-                          />
-                          <textarea
-                            placeholder="Write your comment..."
-                            value={comm.parentComment || ""}
-                            onChange={(e) =>
+                            style={{ cursor: "pointer", color: "#888" }}
+                            onClick={() =>
                               setCommunications((prev) =>
                                 prev.map((c) =>
                                   c.id === comm.id
                                     ? {
                                         ...c,
-                                        parentComment: e.target.value,
+                                        showReply: false,
+                                        draftComment: "",
                                       }
                                     : c,
                                 ),
                               )
                             }
+                          />
+
+                          <textarea
+                            placeholder="Write your comment..."
+                            value={comm.draftComment || ""}
+                            onChange={(e) =>
+                              setCommunications((prev) =>
+                                prev.map((c) =>
+                                  c.id === comm.id
+                                    ? { ...c, draftComment: e.target.value }
+                                    : c,
+                                ),
+                              )
+                            }
                             className={styles.replyInput}
-                          ></textarea>
+                          />
+
                           <button
                             className={styles.submitButton}
-                            onClick={async () => {
-                              try {
-                                const res = await axios.put(
-                                  "/api/communication",
-                                  {
-                                    id: comm.id,
-                                    parentComment: comm.parentComment,
-                                  },
-                                );
-
-                                if (res.status === 200) {
-                                  setCommunications((prev) =>
-                                    prev.map((c) =>
-                                      c.id === comm.id
-                                        ? { ...c, showReply: false }
-                                        : c,
-                                    ),
-                                  );
-
-                                  // Refresh communications
-                                  const response =
-                                    await axios.get("/api/communication");
-                                  setCommunications(response.data);
-                                }
-                              } catch (error) {
-                                console.error(
-                                  "Error sending parent comment:",
-                                  error,
-                                );
-                              }
-                            }}
+                            disabled={!comm.draftComment?.trim()}
+                            onClick={() => handleSendComment(comm)}
                           >
                             Send
                           </button>
