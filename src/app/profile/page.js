@@ -213,7 +213,7 @@ export default function Profile() {
     try {
       const res = await axios.put("/api/communication", {
         id: comm.id,
-        parentComment: comm.parentComment,
+        parentComment: comm.draftComment,
       });
 
       if (res.status === 200) {
@@ -845,67 +845,78 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className={styles.divider}></div>
-                {comm.parentComment && (
+                {comm.parentComment ? (
                   <>
                     <div className={styles.commRow}>
                       <div className={styles.sectionTitle}>
-                        Parents Comment:{" "}
+                        Parents Comment:
                       </div>
                       <div>{comm.parentComment}</div>
                     </div>
                     <div className={styles.divider}></div>
                   </>
-                )}
-                {/* Reply Button */}
-                {!comm.parentComment && (
+                ) : (
                   <div>
-                    {!comm.showReply && role === "PARENT" ? (
+                    {!comm.showReply ? (
                       <button
+                        className={styles.replyButton}
                         onClick={() =>
                           setCommunications((prev) =>
                             prev.map((c) =>
-                              c.id === comm.id ? { ...c, showReply: true } : c,
+                              c.id === comm.id
+                                ? {
+                                    ...c,
+                                    showReply: true,
+                                    draftComment: "",
+                                  }
+                                : c,
                             ),
                           )
                         }
-                        className={styles.replyButton}
                       >
                         Reply
                       </button>
                     ) : (
                       <div className={styles.replyForm}>
                         <FaTimes
-                          style={{
-                            cursor: "pointer",
-                            color: "#888",
-                          }}
-                          onClick={() => {
+                          style={{ cursor: "pointer", color: "#888" }}
+                          onClick={() =>
                             setCommunications((prev) =>
                               prev.map((c) =>
                                 c.id === comm.id
-                                  ? { ...c, showReply: false }
+                                  ? {
+                                      ...c,
+                                      showReply: false,
+                                      draftComment: "",
+                                    }
                                   : c,
                               ),
-                            );
-                          }}
+                            )
+                          }
                         />
+
                         <textarea
                           placeholder="Write your comment..."
-                          value={comm.parentComment || ""}
-                          onChange={(e) => {
-                            e.preventDefault();
+                          value={comm.draftComment || ""}
+                          onChange={(e) =>
                             setCommunications((prev) =>
                               prev.map((c) =>
                                 c.id === comm.id
-                                  ? { ...c, parentComment: e.target.value }
+                                  ? {
+                                      ...c,
+                                      draftComment: e.target.value,
+                                    }
                                   : c,
                               ),
-                            );
-                          }}
+                            )
+                          }
                           className={styles.replyInput}
-                        ></textarea>
+                        />
+
                         <button
+                          type="button"
                           className={styles.submitButton}
+                          disabled={!comm.draftComment?.trim()}
                           onClick={() => handleReplyComment(comm)}
                         >
                           Send
